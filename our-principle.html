@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diana Violin Studio — Teaching Philosophy</title>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Playfair+Display:wght@500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --text:#f0efe9;
+    --gold:#d6b24d;
+  }
+  *{box-sizing:border-box}
+  body{
+    font-family:'Lora',serif;
+    color:var(--text);
+    background:var(--bg);
+    margin:0;
+    padding:0;
+    letter-spacing:.01em;
+  }
+  header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    padding:12px 56px;
+    background:rgba(10,10,10,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(214,178,77,.35);
+  }
+  .logo img{
+    height:80px;
+    width:auto;
+    background:none;
+    filter:none;
+    border-radius:0;
+    padding:0;
+  }
+  nav a{
+    font-family:'Playfair Display',serif;
+    color:var(--text);
+    text-decoration:none;
+    margin:0 10px;
+    font-weight:700;
+    letter-spacing:.02em;
+    transition:color .3s ease;
+  }
+  nav a:hover{ color:var(--gold) }
+  nav a.active{ color:var(--gold) }
+  .hero{
+    position:relative;
+    min-height:60vh;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    padding:0;
+    background: url('https://raw.githubusercontent.com/Yukochin/Dianaviolinstudio/main/Photo2.jpeg') center/cover no-repeat;
+    filter: grayscale(40%) contrast(1.05) brightness(1.1);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.7));
+  }
+  @keyframes fadeInTitle {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .card{
+    position:relative;
+    max-width:900px;
+    padding:36px 42px;
+    border-radius:22px;
+    background:rgba(17,17,17,.55);
+    border:none;
+    box-shadow:0 0 18px rgba(214,178,77,.12), 0 20px 36px rgba(0,0,0,.45);
+    text-align:center;
+    z-index:2;
+    animation: fadeInTitle 1.4s ease-out both;
+  }
+  .card h1{
+    font-family:'Tangerine',cursive;
+    font-size:64px;
+    line-height:1.05;
+    margin:0 0 10px;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:0.02em;
+    text-align:center;
+    text-shadow:0 0 8px rgba(214,178,77,.35);
+  }
+  .card p.lead{
+    font-family:'Lora',serif;
+    font-size:16.5px;
+    line-height:1.7;
+    color:var(--text);
+    margin:0;
+  }
+  main{
+    padding:60px 20px 80px;
+  }
+  .content{
+    max-width:920px;
+    margin:0 auto;
+  }
+  h2.section{
+    font-family:'Tangerine',cursive;
+    font-size:58px;
+    line-height:1.05;
+    margin:0 0 16px;
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:0.02em;
+    text-shadow:0 0 8px rgba(214,178,77,.35);
+    text-align:center;
+  }
+  p{
+    font-size:16px;
+    line-height:1.85;
+    color:var(--text);
+    margin:0 0 18px;
+  }
+  .cta-row{
+    margin-top:10px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-block;
+    font-family:'Playfair Display',serif;
+    padding:10px 16px;
+    border-radius:14px;
+    text-decoration:none;
+    border:1px solid rgba(214,178,77,.4);
+    color:#eae6da;
+    background:rgba(10,10,10,.45);
+    transition:transform .25s,box-shadow .25s,color .25s,background .25s;
+    letter-spacing:.01em;
+    font-size:14.5px;
+  }
+  .btn:hover{
+    transform:translateY(-1px);
+    color:#fff;
+    background:rgba(214,178,77,.15);
+    box-shadow:0 0 0 1px rgba(214,178,77,.35) inset,0 8px 18px rgba(214,178,77,.18);
+  }
+  .btn.primary{
+    background:rgba(214,178,77,.12);
+    box-shadow:0 0 0 1px rgba(214,178,77,.3) inset;
+  }
+  footer{
+    text-align:center;
+    border-top:1px solid rgba(214,178,77,.28);
+    color:var(--text);
+    font-size:14px;
+    padding:40px 20px 20px;
+  }
+  .social-icons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-bottom:14px;
+  }
+  .social-icons a{
+    color:var(--gold);
+    font-size:20px;
+    transition:color .3s ease, transform .3s ease, text-shadow .3s ease;
+  }
+  .social-icons a:hover{
+    color:#f8e4a2;
+    transform:translateY(-2px);
+    text-shadow:0 0 12px rgba(214,178,77,.85);
+  }
+  .email-link{
+    margin-bottom:14px;
+  }
+  .email-link a{
+    color:var(--gold);
+    text-decoration:none;
+    transition:color .3s ease, text-shadow .3s ease;
+    font-weight:500;
+  }
+  .email-link a:hover{
+    color:#f8e4a2;
+    text-shadow:0 0 12px rgba(214,178,77,.85);
+  }
+  @media (max-width: 640px){
+    header{ padding:12px 16px }
+    .card{ padding:26px 22px }
+    .card h1{ font-size:54px }
+    h2.section{ font-size:50px }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="Diana Violin Studio Logo">
+    </div>
+    <nav>
+     <a href="Diana Violin Studio.html">About</a>
+     <a href="our-principle.html">Our Principle</a>
+     <a href="studio-class.html">Studio Class</a>
+     <a href="studio-concert.html">Studio Concert</a>
+     <a href="gallery.html">Gallery</a>
+     <a href="testimonials.html">Testimonials</a>
+     <a href="contact.html">Contact</a>
+</nav>
+  </header>
+
+  <section class="hero">
+      </div>
+    </div>
+  </section>
+
+  <main id="philosophy">
+    <div class="content">
+      <h2 class="section">About Diana Chen</h2>
+      <p>
+        An award-winning violinist and educator, Ms.Diana Chen is widely recognized for her artistry, dedication, and inspiring approach to teaching. A graduate of the Yong Siew Toh Conservatory of Music, National University of Singapore, Ms.Diana completed her Bachelor’s Degree in Violin Performance under a full scholarship in 2018.
+      </p>
+      <p>
+During her studies, Ms.Diana distinguished herself as both a soloist and chamber musician, earning numerous accolades — including 3rd Prize in the Violin Category at the Singapore Concerto Competition (2015) and 2nd Prize at the Qingyuan International Music Festival in China.
+      </p>
+      <p>
+As a performing artist, Ms.Diana has appeared with leading orchestras and productions such as the Singapore Lyric Opera Orchestra, Stuttgart Ballet (Romeo and Juliet), and the Metropolitan Festival Orchestra. She has also graced the stage in world-renowned musicals, including the American Broadway production of “The Phantom of the Opera” during its Singapore run.
+      </p>
+      <p>
+Beyond the classical stage, Ms.Diana embraces musical diversity — performing with celebrated artists like Joanna Dong and Sachiyo in cross-genre collaborations that showcase her versatility and expressive musicianship. In 2017, she had the distinct honour of performing for the President of Singapore, Mdm Halimah Yacob, at an official event.
+      </p>
+      <p>
+Today, Ms.Diana is the founder and principal violin instructor at <strong style="font-family: 'Tangerine', cursive; font-weight:400; font-size:22px; letter-spacing:0.5px;">Diana Violin Studio</strong>, where she guides a vibrant community of students from both local and international schools. Known for her bilingual teaching and patient, structured approach, she nurtures each student’s potential — from beginners to advanced performers — helping them grow in confidence, discipline, and musical artistry.
+      </p>
+      <p>
+Her students have flourished under her guidance, winning awards in international competitions and earning admission to renowned conservatories abroad and leading local schools through the Direct School Admission (DSA) programme.
+      </p>
+      <p>
+Through her studio, Ms.Diana continues her lifelong mission: to inspire excellence through music, and to share the joy, artistry, and connection that the violin brings to life.
+<h2 class="section">Our Teaching Principles</h2>
+      <ul style="font-size:16px; line-height:1.85; color:#f0efe9; list-style-type:'• '; margin-left:20px;">
+        <li>To spark curiosity and imagination through music, guiding students to think creatively and express themselves with heart.</li>
+        <li>To inspire independent learning through patient guidance and a supportive environment where each child feels safe to explore, grow, and discover their own musical voice.</li>
+        <li>To lay a strong foundation in good techniques, helping every student build confidence and joy in their playing.</li>
+        <li>To nurture self-discipline, perseverance, and focus while encouraging a healthy sense of self-belief and pride in every small achievement.</li>
+        <li>To care for every student as an individual — understanding their pace, personality, and strengths so that each one can shine in their own unique way.</li>
+      </ul>
+      </p>
+      </p>
+      </div>
+  </main>
+
+  <footer>
+    <div class="social-icons">
+      <a aria-label="Instagram" href="https://www.instagram.com/diana_chenvln?igsh=bTJpODg2NHM1aHZv" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+      <a aria-label="Rednote (Xiaohongshu)" href="https://xhslink.com/m/8mqaQS7njra" target="_blank" rel="noopener"><i class="fa-solid fa-music"></i></a>
+      <a aria-label="YouTube" href="https://youtube.com/@dianaviolinstudio3816?si=g_GXT86BjGBR-gKg" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+      <a aria-label="Email" href="mailto:dianachen.envie@gmail.com" target="_blank" rel="noopener"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+    <p>© 2025 Diana Violin Studio | Singapore Violinist | Violin Lessons Singapore | Violin Teacher Singapore | Studio Class | Recitals | Performances</p>
+  </footer>
+</body>
+</html>
