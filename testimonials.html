@@ -48,17 +48,7 @@
   nav a:hover{ color:var(--gold) }
   nav a.active{ color:var(--gold) }
 
-  /* ===== Mobile hamburger (hidden on desktop) ===== */
-  .menu-toggle{
-    display:none;
-    font-size:28px;
-    color:var(--gold);
-    cursor:pointer;
-    background:transparent;
-    border:0;
-  }
-
-  /* HERO with subtle faded wallpaper */
+  .menu-toggle{display:none;font-size:28px;color:var(--gold);cursor:pointer;background:transparent;border:0;}
   .hero{
     position:relative;
     min-height:60vh;
@@ -68,7 +58,7 @@
     background:url('violin-hero.jpg') center/cover no-repeat;
     overflow:hidden;
   }
-   .hero::before{ content:''; position:absolute; inset:0; background:rgba(0,0,0,0); }
+  .hero::before{ content:''; position:absolute; inset:0; background:rgba(0,0,0,0); }
   @keyframes fadeInTitle { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .card{
     position:relative;
@@ -110,82 +100,84 @@
     text-align:center;
   }
 
-  .slider{
-    position:relative;
-    overflow:hidden;
-    margin-top:18px;
-  }
-  .lane{
-    display:flex;
-    width:100%;
-    will-change:transform;
-    transition:transform .6s ease;
-    padding:24px 0 12px;
-  }
-  .tcard{
-    min-width:100%;
-    display:grid;
-    place-items:center;
+  .slider{ position:relative; overflow:hidden; margin-top:18px; }
+  .lane{ display:flex; width:100%; will-change:transform; transition:transform .6s ease; padding:24px 0 12px; }
+  .tcard{ min-width:100%; display:grid; place-items:center; }
+
+  /* === Elegant black-gold bubble (matches theme & screenshot) === */
+  @keyframes glowPulse {
+    0%,100%{ box-shadow: 0 14px 36px rgba(0,0,0,.6), 0 0 16px rgba(214,178,77,.22), inset 0 0 10px rgba(214,178,77,.08); }
+    50%{ box-shadow: 0 18px 44px rgba(0,0,0,.7), 0 0 26px rgba(214,178,77,.36), inset 0 0 18px rgba(214,178,77,.18); }
   }
   .bubble{
     position:relative;
-    width:min(820px, 90vw);
-    background:#fff;
-    color:#333;
-    border-radius:16px;
-    padding:32px 30px 26px;
-    box-shadow:0 16px 38px rgba(0,0,0,.45), 0 0 0 1px rgba(214,178,77,.25);
+    width:min(1000px, 92vw);
+    background:rgba(20,20,20,.78);
+    backdrop-filter: blur(12px);
+    color:var(--text);
+    border-radius:20px;
+    padding:40px 44px 34px;
+    border:1px solid rgba(214,178,77,.55);
+    box-shadow: 0 20px 40px rgba(0,0,0,.55), 0 0 0 1px rgba(214,178,77,.18) inset;
     text-align:center;
+    animation: glowPulse 7s ease-in-out infinite;
+    transition: transform .35s ease, box-shadow .35s ease;
   }
+  .bubble:hover{ transform: translateY(-2px); }
+
   .avatar{
     position:absolute;
-    top:-32px; left:50%;
+    top:-36px; left:50%;
     transform:translateX(-50%);
-    width:76px; height:76px;
+    width:86px; height:86px;
     border-radius:50%;
-    border:4px solid #fff;
-    box-shadow:0 6px 16px rgba(0,0,0,.35);
+    border:3px solid rgba(214,178,77,.85);
+    box-shadow:0 6px 18px rgba(0,0,0,.45);
     background-size:cover;
     background-position:center;
-    background-color:#ddd;
+    background-color:#222;
   }
   .name{
-    margin-top:22px;
+    margin-top:26px;
     font-family:'Playfair Display',serif;
     font-weight:700;
-    color:#111;
-    font-size:18px;
+    color:var(--gold);
+    font-size:22px;
   }
   .role{
     margin-top:2px;
-    font-size:13px;
-    color:#666;
+    font-size:14px;
+    color:rgba(240,239,233,.75);
   }
   blockquote{
-    margin:14px auto 0;
+    margin:16px auto 0;
     line-height:1.9;
-    font-size:16.5px;
-    max-width:70ch;
-    color:#222;
+    font-size:18px;
+    max-width:78ch;
+    color:var(--text);
     font-style:italic;
   }
 
-  /* Side (faint) cards like the screenshot */
+  /* Side cards stay visible on desktop; keep existing styles but tone to theme */
   .side{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:290px;
-    background:#fff;
-    color:#333;
-    border-radius:12px;
-    padding:20px 18px;
-    box-shadow:0 8px 24px rgba(0,0,0,.25);
-    opacity:.85;
-    display:none; /* hidden on mobile */
+    width:300px;
+    background:rgba(20,20,20,.6);
+    color:var(--text);
+    border-radius:16px;
+    padding:18px 16px;
+    border:1px solid rgba(214,178,77,.28);
+    box-shadow:0 10px 24px rgba(0,0,0,.35);
+    opacity:.95;
+    display:none;
   }
   .side.left{ left:6%; }
   .side.right{ right:6%; }
+  .side .name{ color:var(--gold); font-weight:700; font-family:'Playfair Display',serif; }
+  .side .role{ color:rgba(240,239,233,.75); font-size:13px; }
+  .side p{ margin:8px 0 0; font-size:14px; line-height:1.7; color:var(--text); font-style:italic; }
 
   .controls{
     display:flex;
@@ -227,10 +219,8 @@
     .slider{ padding:24px 0 34px; }
   }
 
-  /* ===== Responsive nav like Diana_Violin_Studio.html (fast slide) ===== */
   @media (max-width:768px){
     header{ padding:12px 20px; }
-
     nav{
       position:absolute;
       left:0; right:0; top:80px;
@@ -239,18 +229,12 @@
       display:flex;
       flex-direction:column;
       text-align:center;
-
-      /* fast animation */
       max-height:0;
       overflow:hidden;
       opacity:0;
       transform:translateY(-6px);
       visibility:hidden;
-      transition:
-        max-height .18s ease,
-        opacity .15s ease,
-        transform .18s ease,
-        visibility 0s linear .18s;
+      transition:max-height .18s ease, opacity .15s ease, transform .18s ease, visibility 0s linear .18s;
       will-change:max-height,opacity,transform;
     }
     nav.active{
@@ -258,16 +242,9 @@
       opacity:1;
       transform:translateY(0);
       visibility:visible;
-      transition:
-        max-height .25s ease,
-        opacity .18s ease,
-        transform .25s ease,
-        visibility 0s;
+      transition:max-height .25s ease, opacity .18s ease, transform .25s ease, visibility 0s;
     }
-    nav a{
-      margin:12px 0;
-      font-size:18px;
-    }
+    nav a{ margin:12px 0; font-size:18px; }
     .menu-toggle{ display:block; }
     .menu-toggle.open i::before{ content:"\f00d"; } /* Font Awesome X icon */
   }
@@ -285,13 +262,9 @@
     <div class="logo">
       <img src="logo.jpg" alt="Diana Violin Studio Logo">
     </div>
-
-    <!-- Hamburger toggle for mobile -->
-    <button class="menu-toggle" id="menu-toggle"
-            aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
       <i class="fa fa-bars"></i>
     </button>
-
     <nav id="nav-links">
      <a href="index.html">About</a>
      <a href="our-principle.html">Our Principle</a>
@@ -319,12 +292,12 @@
         <div class="side left">
           <div class="name">Parent of A.L.</div>
           <div class="role">Beginner Student</div>
-          <p style="margin:8px 0 0; font-size:14px; line-height:1.7; color:#333;">“The studio class helped my child play with confidence for the first time.”</p>
+          <p>“The studio class helped my child play with confidence for the first time.”</p>
         </div>
         <div class="side right">
           <div class="name">C.Y.</div>
           <div class="role">Upper‑Primary Student</div>
-          <p style="margin:8px 0 0; font-size:14px; line-height:1.7; color:#333;">“Lessons are clear, encouraging, and I enjoy performing now.”</p>
+          <p>“Lessons are clear, encouraging, and I enjoy performing now.”</p>
         </div>
 
         <div class="lane" id="lane">
@@ -335,7 +308,7 @@
               <div class="name">Yuko Chin</div>
               <div class="role">Parent, Singapore</div>
               <blockquote>
-                “Finding Teacher Diana has been a turning point in Hailey’s violin journey. Hailey began lessons with her in August 2025 after a year of learning elsewhere. From the very first lesson, Teacher Diana’s warmth and expertise stood out. She patiently corrected Hailey’s bowing, rebuilt her fundamentals, and rekindled her love for music.Unlike environments that rush through songs or exam grades, Teacher Diana focuses on true learning — cultivating solid technique, mindful practice, and expressive music-making. Hailey now plays with confidence and joy, and we are grateful every week for a teacher who nurtures both skill and heart. It is rare to find such dedication in Singapore, and we feel truly blessed.”
+                “Finding Teacher Diana has been a turning point in Hailey’s violin journey. Hailey began lessons with her in August 2025 after a year of learning elsewhere. From the very first lesson, Teacher Diana’s warmth and expertise stood out. She patiently corrected Hailey’s bowing, rebuilt her fundamentals, and rekindled her love for music. Unlike environments that rush through songs or exam grades, Teacher Diana focuses on true learning — cultivating solid technique, mindful practice, and expressive music-making. Hailey now plays with confidence and joy, and we are grateful every week for a teacher who nurtures both skill and heart. It is rare to find such dedication in Singapore, and we feel truly blessed.”
               </blockquote>
             </div>
           </div>
@@ -343,11 +316,10 @@
           <div class="tcard">
             <div class="bubble">
               <div class="avatar" style="background-image:url('avatar2.jpeg');"></div>
-              <div class="name">Sunny, </div>
+              <div class="name">Sunny</div>
               <div class="role">Parent, Korea</div>
               <blockquote>
-                “In Korea, there is a saying,‘Quality of education cannot exceed quality of teacher.’
-Thanks to Teacher Diana, my son could have a great violin education. He learned not only the violin itself, but also the attitude of learning. She tried to find what could be improved all the time and helped him learn how to play better. It is such an honor to have a violin learning journey with her!”
+                “In Korea, there is a saying, ‘Quality of education cannot exceed quality of teacher.’ Thanks to Teacher Diana, my son could have a great violin education. He learned not only the violin itself, but also the attitude of learning. She tried to find what could be improved all the time and helped him learn how to play better. It is such an honor to have a violin learning journey with her!”
               </blockquote>
             </div>
           </div>
@@ -369,7 +341,7 @@ Thanks to Teacher Diana, my son could have a great violin education. He learned 
               <div class="name">Joanne</div>
               <div class="role">Student, Singapore</div>
               <blockquote>
-                “Teacher Diana is an excellent teacher who understands the student’s perspective and tailors her teaching to each student. She teaches solid technical foundations and has been able to troubleshoot and accurately pinpoint issues with my playing, prescribing the appropriate exercises to effectively correct problems. She is also able to effectively explain how to overcome problems and how to play well, such that I am able to overcome mindset issues. She also has an excellent philosophy on playing, emphasizing enjoyment of the music. I learned important lessons on performance from her which was useful in my music journey. ”
+                “Teacher Diana is an excellent teacher who understands the student’s perspective and tailors her teaching to each student. She teaches solid technical foundations and has been able to troubleshoot and accurately pinpoint issues with my playing, prescribing the appropriate exercises to effectively correct problems. She is also able to effectively explain how to overcome problems and how to play well, such that I am able to overcome mindset issues. She also has an excellent philosophy on playing, emphasizing enjoyment of the music. I learned important lessons on performance from her which was useful in my music journey.”
               </blockquote>
             </div>
           </div>
@@ -407,7 +379,6 @@ Thanks to Teacher Diana, my son could have a great violin education. He learned 
   const AUTOSPEED = 5200; // ms
   const RESUME_AFTER = 5000; // resume auto after interaction
 
-  // Build dots
   slides.forEach((_,i)=>{
     const d=document.createElement('div');
     d.className='dot'+(i===0?' active':'');
@@ -431,11 +402,9 @@ Thanks to Teacher Diana, my son could have a great violin education. He learned 
   }
   function stopAuto(){ if(autoTimer){ clearInterval(autoTimer); autoTimer=null; } }
 
-  // Buttons
   next.addEventListener('click', ()=>{ stopAuto(); nextSlide(); setTimeout(startAuto, RESUME_AFTER); });
   prev.addEventListener('click', ()=>{ stopAuto(); prevSlide(); setTimeout(startAuto, RESUME_AFTER); });
 
-  // Touch / drag for swipe
   let startX=0, currentX=0, dragging=false;
   lane.addEventListener('touchstart', (e)=>{ stopAuto(); dragging=true; startX=e.touches[0].clientX; currentX=startX; });
   lane.addEventListener('touchmove', (e)=>{
@@ -457,31 +426,25 @@ Thanks to Teacher Diana, my son could have a great violin education. He learned 
     setTimeout(startAuto, RESUME_AFTER);
   });
 
-  // Keyboard support
   document.addEventListener('keydown',(e)=>{
     if(e.key==='ArrowRight'){ stopAuto(); nextSlide(); setTimeout(startAuto, RESUME_AFTER); }
     if(e.key==='ArrowLeft'){ stopAuto(); prevSlide(); setTimeout(startAuto, RESUME_AFTER); }
   });
 
-  // Resize handler
   window.addEventListener('resize', ()=>goTo(index));
 
-  // Init
   goTo(0);
   startAuto();
 })();
 
-// ===== Mobile nav toggle (same behavior as main page) =====
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks   = document.getElementById('nav-links');
-
 function closeMenu(){
   navLinks.classList.remove('active');
   menuToggle.classList.remove('open');
   menuToggle.setAttribute('aria-expanded','false');
   document.body.style.overflow = '';
 }
-
 menuToggle.addEventListener('click', () => {
   const willOpen = !navLinks.classList.contains('active');
   navLinks.classList.toggle('active');
@@ -489,14 +452,8 @@ menuToggle.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', String(willOpen));
   document.body.style.overflow = willOpen ? 'hidden' : '';
 });
-
-// Close after choosing a link (mobile UX)
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-// Close if resized to desktop
-window.addEventListener('resize', () => {
-  if(window.innerWidth > 768) closeMenu();
-});
+window.addEventListener('resize', () => { if(window.innerWidth > 768) closeMenu(); });
 </script>
 </body>
 </html>
