@@ -49,7 +49,6 @@
   nav a:hover{ color:var(--gold) }
   nav a.active{ color:var(--gold) }
 
-  /* ===== Hamburger toggle (hidden on desktop) ===== */
   .menu-toggle{
     display:none;
     font-size:28px;
@@ -59,17 +58,26 @@
     border:0;
   }
 
-  /* HERO */
+  /* HERO wallpaper centered for faces */
   .hero{
     position:relative;
     min-height:60vh;
     display:grid;
     place-items:center;
-    padding:10px 10px 10px;
-    background:url('recital.jpeg') center/cover no-repeat;
+    padding:20px;
+    background:url('recital.jpeg') center 25%/cover no-repeat;
     overflow:hidden;
   }
-   .hero::before{ content:''; position:absolute; inset:0; background:rgba(0,0,0,0); }
+
+  /* adjust for mobile view */
+  @media (max-width:768px){
+    .hero{
+      background-position:center 35%;
+      min-height:55vh;
+    }
+  }
+
+  .hero::before{ content:''; position:absolute; inset:0; background:rgba(0,0,0,0); }
   @keyframes fadeInTitle { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
   .card{
     position:relative;
@@ -106,7 +114,6 @@
   }
   p{ font-size:16px; line-height:1.9; margin:0 0 18px; }
 
-  /* Highlights */
   .grid{
     display:grid;
     gap:18px;
@@ -132,7 +139,6 @@
   @media (max-width: 920px){ .feature{ grid-column:span 6; } }
   @media (max-width: 640px){ .feature{ grid-column:span 12; } }
 
-  /* Moments carousel */
   .gallery{
     margin:36px auto 0;
     max-width:1100px;
@@ -185,7 +191,6 @@
   .dot{ width:8px; height:8px; border-radius:50%; background:rgba(214,178,77,.35); }
   .dot.active{ background:rgba(214,178,77,.95); }
 
-  /* CTA */
   .cta{
     max-width:980px; margin:20px auto 0;
     background:linear-gradient(180deg, rgba(214,178,77,.15), rgba(214,178,77,.05));
@@ -222,7 +227,6 @@
   .social-icons a:hover{ color:#f8e4a2; transform:translateY(-2px); text-shadow:0 0 12px rgba(214,178,77,.85); }
   footer p{ color:var(--text); font-family:'Lora',serif; font-size:14px; margin:0; letter-spacing:0.02em; }
 
-  /* ===== Mobile nav (fast slide) to match main page ===== */
   @media (max-width:768px){
     header{ padding:12px 20px; }
 
@@ -234,17 +238,12 @@
       display:flex;
       flex-direction:column;
       text-align:center;
-
       max-height:0;
       overflow:hidden;
       opacity:0;
       transform:translateY(-6px);
       visibility:hidden;
-      transition:
-        max-height .18s ease,
-        opacity .15s ease,
-        transform .18s ease,
-        visibility 0s linear .18s;
+      transition:max-height .18s ease, opacity .15s ease, transform .18s ease, visibility 0s linear .18s;
       will-change:max-height,opacity,transform;
     }
     nav.active{
@@ -252,15 +251,11 @@
       opacity:1;
       transform:translateY(0);
       visibility:visible;
-      transition:
-        max-height .25s ease,
-        opacity .18s ease,
-        transform .25s ease,
-        visibility 0s;
+      transition:max-height .25s ease, opacity .18s ease, transform .25s ease, visibility 0s;
     }
     nav a{ margin:12px 0; font-size:18px; }
     .menu-toggle{ display:block; }
-    .menu-toggle.open i::before{ content:"\f00d"; } /* Font Awesome X icon */
+    .menu-toggle.open i::before{ content:"\f00d"; }
   }
 
   @media (max-width:640px){
@@ -277,13 +272,9 @@
     <div class="logo">
       <img src="logo.jpg" alt="Diana Violin Studio Logo">
     </div>
-
-    <!-- Hamburger toggle for mobile -->
-    <button class="menu-toggle" id="menu-toggle"
-            aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
       <i class="fa fa-bars"></i>
     </button>
-
     <nav id="nav-links">
      <a href="index.html">About</a>
      <a href="our-principle.html">Our Principle</a>
@@ -305,9 +296,7 @@
   <main>
     <div class="content">
       <h2 class="section">About the Studio Concert</h2>
-      <p>
-        The Studio Concert is one of the most anticipated annual events at <strong style="font-family:'Tangerine',cursive; font-weight:400; font-size:22px; letter-spacing:0.5px;">Diana Violin Studio</strong> — a celebration of our students’ hard work, growth, and artistry. It offers every student the opportunity to perform in an official recital hall before a live audience, transforming practice-room dedication into a moment of shared musical joy. Beyond showcasing performances, the Studio Concert nurtures confidence, poise, and stage presence. It provides a supportive platform for students to experience the thrill of live performance while developing focus and expression under gentle, encouraging guidance.Each concert is a heartfelt gathering of students, parents, and teachers — a moment to honor every stage of progress and to inspire one another in a positive, uplifting musical community.
-      </p>
+      <p>The Studio Concert is one of the most anticipated annual events at <strong style="font-family:'Tangerine',cursive; font-weight:400; font-size:22px; letter-spacing:0.5px;">Diana Violin Studio</strong> — a celebration of our students’ hard work, growth, and artistry. It offers every student the opportunity to perform in an official recital hall before a live audience, transforming practice-room dedication into a moment of shared musical joy. Beyond showcasing performances, the Studio Concert nurtures confidence, poise, and stage presence. It provides a supportive platform for students to experience the thrill of live performance while developing focus and expression under gentle, encouraging guidance. Each concert is a heartfelt gathering of students, parents, and teachers — a moment to honor every stage of progress and to inspire one another in a positive, uplifting musical community.</p>
       <div class="grid">
         <div class="feature">
           <h3><i class="fa-solid fa-music"></i> Real Stage Experience</h3>
@@ -324,7 +313,6 @@
       </div>
     </div>
 
-    <!-- Moments Carousel -->
     <section class="gallery" aria-label="Studio Concert Photo Gallery">
       <h2 class="section" style="margin-top:8px;">Concert Moments</h2>
       <div class="carousel" id="carousel">
@@ -342,7 +330,6 @@
       <div class="dots" id="dots"></div>
     </section>
 
-    <!-- CTA -->
     <div class="cta">
       <h3>Join Our Next Concert</h3>
       <p>Ready to experience the stage with gentle guidance and joyful support? Start with a trial lesson and be part of our next studio concert.</p>
@@ -370,10 +357,9 @@
   let index = 0;
   let width = () => track.getBoundingClientRect().width;
   let autoTimer = null;
-  const AUTOSPEED = 4400; // ms
-  const RESUME_AFTER = 5000; // resume auto after interaction
+  const AUTOSPEED = 4400;
+  const RESUME_AFTER = 5000;
 
-  // Build dots
   slides.forEach((_,i)=>{
     const d=document.createElement('div');
     d.className='dot'+(i===0?' active':''); dotsWrap.appendChild(d);
@@ -415,7 +401,7 @@
   goTo(0); startAuto();
 })();
 
-// ===== Mobile nav toggle (same behavior as main page) =====
+// Mobile nav toggle
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks   = document.getElementById('nav-links');
 
@@ -434,10 +420,8 @@ menuToggle.addEventListener('click', () => {
   document.body.style.overflow = willOpen ? 'hidden' : '';
 });
 
-// Close after choosing a link (mobile UX)
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-// Close if resized to desktop
 window.addEventListener('resize', () => {
   if(window.innerWidth > 768) closeMenu();
 });
