@@ -59,6 +59,26 @@
 <!-- 24 photos -->
 <div class="slide"><img src="g1.jpeg"></div><div class="slide"><img src="g2.jpeg"></div><div class="slide"><img src="g3.jpeg"></div><div class="slide"><img src="g4.jpeg"></div><div class="slide"><img src="g5.jpeg"></div><div class="slide"><img src="g6.jpeg"></div><div class="slide"><img src="g7.jpeg"></div><div class="slide"><img src="g8.jpeg"></div><div class="slide"><img src="g9.jpeg"></div>
 </div><div class="controls"><button class="btn" id="prev2">‹</button><button class="btn" id="next2">›</button></div></div><div class="dots" id="dots2"></div></section>
+<h2 class="section-title">Little Moments of Big Learning</h2>
+<section class="gallery">
+  <div class="carousel" id="carousel3">
+    <div class="track" id="track3">
+      <!-- 6 photos -->
+      <div class="slide"><img src="c1.jpeg"></div>
+      <div class="slide"><img src="c2.jpeg"></div>
+      <div class="slide"><img src="c3.jpeg"></div>
+      <div class="slide"><img src="c4.jpeg"></div>
+      <div class="slide"><img src="c5.jpeg"></div>
+      <div class="slide"><img src="c6.jpeg"></div>
+    </div>
+    <div class="controls">
+      <button class="btn" id="prev3">‹</button>
+      <button class="btn" id="next3">›</button>
+    </div>
+  </div>
+  <div class="dots" id="dots3"></div>
+</section>
+
 </div>
 </main>
 <footer><div class="social-icons"><a href="https://www.instagram.com/diana_chenvln?igsh=bTJpODg2NHM1aHZv"><i class="fa-brands fa-instagram"></i></a><a href="https://xhslink.com/m/8mqaQS7njra"><i class="fa-solid fa-music"></i></a><a href="https://youtube.com/@dianaviolinstudio3816?si=g_GXT86BjGBR-gKg"><i class="fa-brands fa-youtube"></i></a><a href="mailto:dianachen.envie@gmail.com"><i class="fa-solid fa-envelope"></i></a></div><p>© 2025 Diana Violin Studio | Singapore Violinist | Violin Lessons Singapore | Violin Teacher Singapore | Gallery | Singapore</p></footer>
@@ -66,6 +86,7 @@
 function initCarousel(trackId,prevId,nextId,dotsId){const track=document.getElementById(trackId);const slides=[...track.children];const prev=document.getElementById(prevId);const next=document.getElementById(nextId);const dotsWrap=document.getElementById(dotsId);let idx=0;let width=()=>track.getBoundingClientRect().width;slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d);d.onclick=()=>goTo(i)});const dots=[...dotsWrap.children];function goTo(i){idx=(i+slides.length)%slides.length;track.style.transform=`translateX(${-idx*width()}px)`;dots.forEach((d,di)=>d.classList.toggle('active',di===idx))}prev.onclick=()=>goTo(idx-1);next.onclick=()=>goTo(idx+1);window.addEventListener('resize',()=>goTo(idx));goTo(0)}
 initCarousel('track1','prev1','next1','dots1');
 initCarousel('track2','prev2','next2','dots2');
+initCarousel('track3','prev3','next3','dots3');
 const menuToggle=document.getElementById('menu-toggle'),navLinks=document.getElementById('nav-links');menuToggle.onclick=()=>{navLinks.classList.toggle('active')};
 </script>
 </body>
