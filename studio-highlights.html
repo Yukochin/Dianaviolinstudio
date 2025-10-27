@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Diana Violin Studio — Studio Highlights</title>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Playfair+Display:wght@500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --text:#f0efe9;
+    --gold:#d6b24d;
+  }
+  *{box-sizing:border-box}
+  body{font-family:'Lora',serif;color:var(--text);background:var(--bg);margin:0;padding:0;letter-spacing:.01em;overflow-x:hidden;}
+  header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:12px 56px;background:rgba(10,10,10,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(214,178,77,.35);}
+  .logo img{height:80px;width:auto;}
+  nav a{font-family:'Playfair Display',serif;color:var(--text);text-decoration:none;margin:0 10px;font-weight:700;letter-spacing:.02em;transition:color .3s ease;}
+  nav a:hover{color:var(--gold)} nav a.active{color:var(--gold)}
+  .menu-toggle{display:none;font-size:28px;color:var(--gold);cursor:pointer;background:transparent;border:0;}
+
+  /* HERO (Studio Class style; keep concert wallpaper) */
+  .hero{background-attachment:fixed;position:relative;min-height:60vh;display:grid;place-items:center;overflow:hidden;padding:0;background:url('highlight.jpeg') center 36%/cover no-repeat;filter:contrast(1) brightness(1);}
+  .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0);}
+  @keyframes fadeInTitle{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .card{position:relative;max-width:900px;padding:36px 42px;border-radius:22px;background:rgba(17,17,17,.55);box-shadow:0 0 18px rgba(214,178,77,.12),0 20px 36px rgba(0,0,0,.45);text-align:center;z-index:2;animation:fadeInTitle 1.4s ease-out both;}
+  .card h1{font-family:'Tangerine',cursive;font-size:64px;line-height:1.05;margin:0 0 10px;color:var(--gold);font-weight:700;letter-spacing:.02em;text-align:center;text-shadow:0 0 8px rgba(214,178,77,.35);}
+  .card p.lead{font-size:16.5px;line-height:1.7;margin:0;}
+  main{padding:60px 20px 60px;}
+  .content{max-width:1100px;margin:0 auto;}
+  h2.section{font-family:'Tangerine',cursive;font-size:58px;line-height:1.05;margin:0 0 16px;color:var(--gold);font-weight:700;letter-spacing:.02em;text-shadow:0 0 8px rgba(214,178,77,.35);text-align:center;}
+  p{font-size:16px;line-height:1.85;margin:0 0 18px;}
+
+  /* Info cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:28px 0 8px;}
+  .card2{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(214,178,77,.22);border-radius:22px;padding:20px 20px 22px;box-shadow:inset 0 0 0 1px rgba(214,178,77,.06),0 10px 28px rgba(0,0,0,.35);position:relative;overflow:hidden;}
+  .card2::after{content:'';position:absolute;inset:-1px;background:radial-gradient(600px 120px at 20% 0%,rgba(214,178,77,.15),transparent 60%);pointer-events:none;}
+  .card2 h3{margin:0 0 8px;font-family:'Playfair Display',serif;font-size:20px;letter-spacing:.02em;color:#fff;}
+  .meta{font-size:13px;color:var(--gold);margin-bottom:8px}
+  .card2 p{font-size:15px;color:#eee;}
+
+  /* ===== Split-Focus Award Showcase (v5, frameless + reveal) ===== */
+  .award-showcase{margin:48px auto 0;max-width:1200px;}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* L1 vertical hero — pure image, no frame */
+  .hero-award-wrap{width:min(860px,94%);margin:0 auto 18px;}
+  .hero-award{cursor:pointer;}
+  .hero-award .portrait{display:block;width:100%;height:70vh;object-fit:contain;object-position:center;background:transparent;border-radius:0;}
+
+  /* shimmer line + caption */
+  .hero-caption-wrap{padding:10px 6px 0;text-align:center;}
+  .hero-caption-line{height:2px;width:220px;margin:0 auto 10px;border-radius:999px;background:linear-gradient(90deg, rgba(214,178,77,0), rgba(214,178,77,.85), rgba(214,178,77,0));position:relative;overflow:hidden;filter:drop-shadow(0 0 6px rgba(214,178,77,.35));}
+  .hero-caption-line::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.65), rgba(255,255,255,0));width:60px;transform:translateX(-60px);animation:shimmer 7s linear infinite;}
+  @keyframes shimmer{to{transform:translateX(220px);}}
+  .hero-caption{font-family:'Playfair Display',serif;font-style:italic;color:#eedfa6;letter-spacing:.02em}
+
+  /* L2 + L3 row — pure images, no frames */
+  .award-row{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:18px;}
+  .award-card{cursor:pointer;}
+  .award-card img{display:block;width:100%;height:52vh;object-fit:contain;object-position:center;background:transparent;border-radius:0;}
+  .award-caption{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.5);border:1px solid rgba(214,178,77,.3);padding:6px 10px;border-radius:12px;font-size:12px;color:#eedfa6;}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:60;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:92vw;max-height:88vh;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,.6),0 0 0 1px rgba(214,178,77,.25) inset;background:#000;}
+  .lightbox .close{position:absolute;top:18px;right:22px;background:transparent;border:0;color:#fff;font-size:28px;cursor:pointer;}
+
+  footer{text-align:center;border-top:1px solid rgba(214,178,77,.28);color:var(--text);font-size:14px;padding:40px 20px 20px;margin-top:40px;}
+  .social-icons{display:flex;justify-content:center;gap:20px;margin-bottom:16px;}
+  .social-icons a{color:var(--gold);font-size:22px;transition:color .3s ease, transform .3s ease, text-shadow .3s ease;}
+  .social-icons a:hover{color:#f8e4a2;transform:translateY(-2px);text-shadow:0 0 12px rgba(214,178,77,.85);}
+
+  @media (max-width:1024px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .hero-award .portrait{height:60vh;}
+    .award-card img{height:44vh;}
+  }
+  @media (max-width:768px){
+    header{padding:12px 20px;}
+    nav{position:absolute;left:0;right:0;top:80px;background:rgba(10,10,10,.96);border-top:1px solid rgba(214,178,77,.35);display:flex;flex-direction:column;text-align:center;max-height:0;overflow:hidden;opacity:0;transform:translateY(-6px);visibility:hidden;transition:max-height .18s ease,opacity .15s ease,transform .18s ease,visibility 0s linear .18s;}
+    nav.active{max-height:420px;opacity:1;transform:translateY(0);visibility:visible;transition:max-height .25s ease,opacity .18s ease,transform .25s ease,visibility 0s;}
+    nav a{margin:12px 0;font-size:18px;}
+    .menu-toggle{display:block;}
+    .menu-toggle.open i::before{content:"\f00d";}
+    .hero{background-attachment:scroll;background-position:center 34%;min-height:60vh;}
+    .cards{grid-template-columns:1fr;}
+    .award-row{grid-template-columns:1fr;}
+    .hero-award .portrait{height:56vh;}
+    .award-card img{height:50vh;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><img src="logo.jpg" alt="Diana Violin Studio Logo"></div>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links"><i class="fa fa-bars"></i></button>
+  <nav id="nav-links">
+    <a href="index.html">About</a>
+    <a href="our-principle.html">Our Principle</a>
+    <a href="studio-events.html">Studio Events</a>
+    <a href="studio-highlights.html">Studio Highlights</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" aria-label="Hero">
+  <div class="card">
+    <h1>Studio Highlights</h1>
+    <p class="lead">Students from <strong style="font-family:'Tangerine',cursive; font-weight:400; font-size:22px; letter-spacing:.5px;">Diana Violin Studio</strong> have received recognition for their artistic development and commitment across both local and international stages. Their experiences span performances, competitions, and collaborations that reflect the studio’s emphasis on growth, expression, and musicianship.</p>
+  </div>
+</section>
+
+<main>
+  <div class="content">
+    <h2 class="section">International Collaborations & Recognition</h2>
+    <div class="cards">
+      <div class="card2">
+        <div class="meta">United Kingdom · Ongoing</div>
+        <h3>University College London Orchestra (UCL Orchestra)</h3>
+        <p>Collaborations include chamber tours, Arts Fair events, solo features, and recording projects across the UK — giving our musicians exposure to professional standards and ensemble culture.</p>
+      </div>
+      <div class="card2">
+        <div class="meta">Korea · Sungshin University</div>
+        <h3>National Music Competition — 3rd Prize (Violin)</h3>
+        <p>Recognition by the Sungshin University College of Music and the Sungshin University National Music Competition, where a student received <em>3rd Prize</em> in Violin.</p>
+      </div>
+      <div class="card2">
+        <div class="meta">London Young Musician (LYM)</div>
+        <h3>Over Twenty Prizes & Teacher Award (2023)</h3>
+        <p>Our young musicians earned distinctions across categories — Gold, Silver, Bronze, and a Special Prize for Engaging Performance. In 2023, <strong>Diana Violin Studio</strong> received the <em>London Young Musician Teacher Award</em> for its meaningful, holistic music education.</p>
+      </div>
+    </div>
+
+    <h2 class="section" style="margin-top:44px;">Community & School Stages</h2>
+    <p>Beyond competitions, students remain active within their schools and communities, performing in solo and chamber ensembles. These experiences continue to cultivate confidence, collaboration, and stage presence — qualities that embody the spirit of the studio’s teaching philosophy.</p>
+
+    <!-- Split-Focus Award Certificates (v5 frameless) -->
+    <section class="award-showcase" aria-label="London Young Musician Certificates">
+      <h2 class="section" style="margin-top:28px;">London Young Musician — Prize Highlights</h2>
+
+      <div class="hero-award-wrap reveal">
+        <figure class="hero-award" data-full="L1.jpeg">
+          <img class="portrait" src="L1.jpeg" alt="Annual Star Musician Award — London Young Musician 2023">
+        </figure>
+        <div class="hero-caption-wrap">
+          <div class="hero-caption-line"></div>
+          <div class="hero-caption"><em>Annual Star Musician Award – London Young Musician 2023</em></div>
+        </div>
+      </div>
+
+      <div class="award-row">
+        <figure class="award-card reveal" data-full="L2.jpeg">
+          <img src="L2.jpeg" alt="Gold Prize — London Young Musician 2022–23 Season 4">
+        </figure>
+        <figure class="award-card reveal" data-full="L3.jpeg">
+          <img src="L3.jpeg" alt="Silver Prize — London Young Musician 2022–23 Season 4">
+        </figure>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="social-icons">
+    <a aria-label="Instagram" href="https://www.instagram.com/diana_chenvln?igsh=bTJpODg2NHM1aHZv" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+    <a aria-label="Rednote (Xiaohongshu)" href="https://xhslink.com/m/8mqaQS7njra" target="_blank" rel="noopener"><i class="fa-solid fa-music"></i></a>
+    <a aria-label="YouTube" href="https://youtube.com/@dianaviolinstudio3816?si=g_GXT86BjGBR-gKg" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+    <a aria-label="Email" href="mailto:dianachen.envie@gmail.com" target="_blank" rel="noopener"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <p>© 2025 Diana Violin Studio | Singapore Violinist | Violin Lessons Singapore | Violin Teacher Singapore | Studio Highlights | Singapore</p>
+</footer>
+
+<script>
+// Mobile nav
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks   = document.getElementById('nav-links');
+function closeMenu(){navLinks.classList.remove('active');menuToggle.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+menuToggle.addEventListener('click',()=>{const willOpen=!navLinks.classList.contains('active');navLinks.classList.toggle('active');menuToggle.classList.toggle('open');menuToggle.setAttribute('aria-expanded',String(willOpen));document.body.style.overflow=willOpen?'hidden':'';});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+window.addEventListener('resize',()=>{if(window.innerWidth>768) closeMenu();});
+
+// Lightbox
+const box=document.createElement('div');box.className='lightbox';box.innerHTML='<button class=\"close\" aria-label=\"Close\">✕</button><img alt=\"Award enlarge\">';document.body.appendChild(box);
+const imgEl=box.querySelector('img');
+document.querySelectorAll('.hero-award, .award-card').forEach(fig=>{fig.addEventListener('click',()=>{imgEl.src=fig.dataset.full||fig.querySelector('img').src;box.classList.add('open');});});
+box.addEventListener('click',(e)=>{if(e.target===box||e.target.classList.contains('close')) box.classList.remove('open');});
+
+// Reveal-on-scroll
+const revealEls=document.querySelectorAll('.reveal');
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:.3});
+revealEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
