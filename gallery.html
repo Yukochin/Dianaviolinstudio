@@ -24,7 +24,24 @@
   .card p.lead{font-size:16px;line-height:1.8;margin:0;color:var(--muted)}
   main{padding:40px 16px 60px}
   .wrap{max-width:1200px;margin:0 auto}
-  .section-title{font-family:'Tangerine',cursive;font-size:56px;color:var(--gold);text-align:center;margin:10px auto 24px;text-shadow:0 0 12px rgba(214,178,77,.25)}
+  /* Smaller, shining WOW titles */
+  .section-title{
+    font-family:'Tangerine',cursive;
+    font-size:42px; /* smaller than before */
+    color:var(--gold);
+    text-align:center;
+    margin:10px auto 24px;
+    animation:glowText 5s ease-in-out infinite alternate; /* slower, elegant pulse */
+    text-shadow:
+      0 0 6px rgba(214,178,77,.30),
+      0 0 14px rgba(214,178,77,.50),
+      0 0 26px rgba(214,178,77,.70);
+  }
+  @keyframes glowText{
+    0%{ text-shadow:0 0 6px rgba(214,178,77,.30),0 0 12px rgba(214,178,77,.50),0 0 20px rgba(214,178,77,.60) }
+    50%{ text-shadow:0 0 12px rgba(214,178,77,.60),0 0 26px rgba(214,178,77,.80),0 0 40px rgba(214,178,77,1) }
+    100%{ text-shadow:0 0 6px rgba(214,178,77,.30),0 0 12px rgba(214,178,77,.50),0 0 20px rgba(214,178,77,.60) }
+  }
   .gallery{margin:8px auto 0;max-width:1100px;padding:0 8px 40px}
   .carousel{position:relative;overflow:hidden;border-radius:18px;box-shadow:0 12px 32px rgba(0,0,0,.35),0 0 0 1px rgba(214,178,77,.15) inset}
   .track{display:flex;width:100%;transition:transform .6s ease}
@@ -41,52 +58,147 @@
   .social-icons a{color:var(--gold);font-size:22px;transition:color .3s ease,transform .3s ease,text-shadow .3s ease}
   .social-icons a:hover{color:#f8e4a2;transform:translateY(-2px);text-shadow:0 0 12px rgba(214,178,77,.85)}
   footer p{color:var(--text);font-family:'Lora',serif;font-size:14px;margin:0;letter-spacing:.02em}
-  @media(max-width:768px){header{padding:12px 20px}nav{position:absolute;left:0;right:0;top:80px;background:rgba(10,10,10,.96);border-top:1px solid rgba(214,178,77,.35);display:flex;flex-direction:column;text-align:center;max-height:0;overflow:hidden;opacity:0;transform:translateY(-6px);visibility:hidden;transition:max-height .18s ease,opacity .15s ease,transform .18s ease,visibility 0s linear .18s}nav.active{max-height:420px;opacity:1;transform:translateY(0);visibility:visible;transition:max-height .25s ease,opacity .18s ease,transform .25s ease,visibility 0s}nav a{margin:12px 0;font-size:18px}.menu-toggle{display:block}.hero{background-position:center 34%;min-height:56vh}.slide img{height:50vh}}
+  @media(max-width:768px){
+    header{padding:12px 20px}
+    nav{position:absolute;left:0;right:0;top:80px;background:rgba(10,10,10,.96);border-top:1px solid rgba(214,178,77,.35);display:flex;flex-direction:column;text-align:center;max-height:0;overflow:hidden;opacity:0;transform:translateY(-6px);visibility:hidden;transition:max-height .18s ease,opacity .15s ease,transform .18s ease,visibility 0s linear .18s}
+    nav.active{max-height:420px;opacity:1;transform:translateY(0);visibility:visible;transition:max-height .25s ease,opacity .18s ease,transform .25s ease,visibility 0s}
+    nav a{margin:12px 0;font-size:18px}
+    .menu-toggle{display:block}
+    .hero{background-position:center 34%;min-height:56vh}
+    .slide img{height:50vh}
+    .section-title{font-size:38px} /* slightly smaller on mobile */
+  }
 </style>
 </head>
 <body>
-<header><div class="logo"><img src="logo.jpg" alt="Diana Violin Studio Logo"></div><button class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button><nav id="nav-links"><a href="index.html">About</a><a href="our-principle.html">Our Principle</a><a href="studio-events.html">Studio Events</a><a href="studio-highlights.html">Studio Highlights</a><a  href="gallery.html" class="active">Gallery</a><a href="testimonials.html">Testimonials</a><a href="contact.html">Contact</a></nav></header>
-<section class="hero"><div class="card"><h1>Gallery</h1><p class="lead">Swipe through highlights of performances, concerts, and cherished studio memories — displayed in the same style as our Studio Class photos.</p></div></section>
-<div class="wrap">
-<h2 class="section-title">The Art of the Concerto</h2>
-<section class="gallery"><div class="carousel" id="carousel1"><div class="track" id="track1">
-<!-- 9 photos -->
-<div class="slide"><img src="gallery10.jpeg"></div><div class="slide"><img src="gallery2.jpeg"></div><div class="slide"><img src="gallery3.jpeg"></div><div class="slide"><img src="gallery4.jpeg"></div><div class="slide"><img src="gallery5.jpeg"></div><div class="slide"><img src="gallery6.jpeg"></div><div class="slide"><img src="gallery7.jpeg"></div><div class="slide"><img src="gallery8.jpeg"></div><div class="slide"><img src="gallery9.jpeg"></div>
-</div><div class="controls"><button class="btn" id="prev1">‹</button><button class="btn" id="next1">›</button></div></div><div class="dots" id="dots1"></div></section>
-<h2 class="section-title">Honoring Our Students’ Artistry on Stage with Our Principal</h2>
-<section class="gallery"><div class="carousel" id="carousel2"><div class="track" id="track2">
-<!-- 24 photos -->
-<div class="slide"><img src="g1.jpeg"></div><div class="slide"><img src="g2.jpeg"></div><div class="slide"><img src="g3.jpeg"></div><div class="slide"><img src="g4.jpeg"></div><div class="slide"><img src="g5.jpeg"></div><div class="slide"><img src="g6.jpeg"></div><div class="slide"><img src="g11.jpeg"></div><div class="slide"><img src="g8.jpeg"></div><div class="slide"><img src="g9.jpeg"></div>
-</div><div class="controls"><button class="btn" id="prev2">‹</button><button class="btn" id="next2">›</button></div></div><div class="dots" id="dots2"></div></section>
-<h2 class="section-title">Little Moments of Big Learning</h2>
-<section class="gallery">
-  <div class="carousel" id="carousel3">
-    <div class="track" id="track3">
-      <!-- 6 photos -->
-      <div class="slide"><img src="C1.jpeg"></div>
-      <div class="slide"><img src="C2.jpeg"></div>
-      <div class="slide"><img src="C3.jpeg"></div>
-      <div class="slide"><img src="C4.jpeg"></div>
-      <div class="slide"><img src="C5.jpeg"></div>
-      <div class="slide"><img src="C6.jpeg"></div>
-    </div>
-    <div class="controls">
-      <button class="btn" id="prev3">‹</button>
-      <button class="btn" id="next3">›</button>
-    </div>
+<header>
+  <div class="logo"><img src="logo.jpg" alt="Diana Violin Studio Logo"></div>
+  <button class="menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i></button>
+  <nav id="nav-links">
+    <a href="index.html">About</a>
+    <a href="our-principle.html">Our Principle</a>
+    <a href="studio-events.html">Studio Events</a>
+    <a href="studio-highlights.html">Studio Highlights</a>
+    <a  href="gallery.html" class="active">Gallery</a>
+    <a href="testimonials.html">Testimonials</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<section class="hero">
+  <div class="card">
+    <h1>Gallery</h1>
+    <p class="lead">Swipe through highlights of performances, concerts, and cherished studio memories — displayed in the same style as our Studio Class photos.</p>
   </div>
-  <div class="dots" id="dots3"></div>
 </section>
+<div class="wrap">
+  <h2 class="section-title">The Art of the Concerto</h2>
+  <section class="gallery">
+    <div class="carousel" id="carousel1">
+      <div class="track" id="track1">
+        <!-- 9 photos -->
+        <div class="slide"><img src="gallery10.jpeg" alt="Concerto gallery 10"></div>
+        <div class="slide"><img src="gallery2.jpeg" alt="Concerto gallery 2"></div>
+        <div class="slide"><img src="gallery3.jpeg" alt="Concerto gallery 3"></div>
+        <div class="slide"><img src="gallery4.jpeg" alt="Concerto gallery 4"></div>
+        <div class="slide"><img src="gallery5.jpeg" alt="Concerto gallery 5"></div>
+        <div class="slide"><img src="gallery6.jpeg" alt="Concerto gallery 6"></div>
+        <div class="slide"><img src="gallery7.jpeg" alt="Concerto gallery 7"></div>
+        <div class="slide"><img src="gallery8.jpeg" alt="Concerto gallery 8"></div>
+        <div class="slide"><img src="gallery9.jpeg" alt="Concerto gallery 9"></div>
+      </div>
+      <div class="controls"><button class="btn" id="prev1">‹</button><button class="btn" id="next1">›</button></div>
+    </div>
+    <div class="dots" id="dots1"></div>
+  </section>
+
+  <h2 class="section-title">Honoring Our Students’ Artistry on Stage with Our Principal</h2>
+  <section class="gallery">
+    <div class="carousel" id="carousel2">
+      <div class="track" id="track2">
+        <!-- 24 photos (sample subset placed) -->
+        <div class="slide"><img src="g1.jpeg" alt="Stage artistry 1"></div>
+        <div class="slide"><img src="g2.jpeg" alt="Stage artistry 2"></div>
+        <div class="slide"><img src="g3.jpeg" alt="Stage artistry 3"></div>
+        <div class="slide"><img src="g4.jpeg" alt="Stage artistry 4"></div>
+        <div class="slide"><img src="g5.jpeg" alt="Stage artistry 5"></div>
+        <div class="slide"><img src="g6.jpeg" alt="Stage artistry 6"></div>
+        <div class="slide"><img src="g11.jpeg" alt="Stage artistry 11"></div>
+        <div class="slide"><img src="g8.jpeg" alt="Stage artistry 8"></div>
+        <div class="slide"><img src="g9.jpeg" alt="Stage artistry 9"></div>
+      </div>
+      <div class="controls"><button class="btn" id="prev2">‹</button><button class="btn" id="next2">›</button></div>
+    </div>
+    <div class="dots" id="dots2"></div>
+  </section>
+
+  <h2 class="section-title">Little Moments of Big Learning</h2>
+  <section class="gallery">
+    <div class="carousel" id="carousel3">
+      <div class="track" id="track3">
+        <!-- 6 photos -->
+        <div class="slide"><img src="C1.jpeg" alt="Class moment 1"></div>
+        <div class="slide"><img src="C2.jpeg" alt="Class moment 2"></div>
+        <div class="slide"><img src="C3.jpeg" alt="Class moment 3"></div>
+        <div class="slide"><img src="C4.jpeg" alt="Class moment 4"></div>
+        <div class="slide"><img src="C5.jpeg" alt="Class moment 5"></div>
+        <div class="slide"><img src="C6.jpeg" alt="Class moment 6"></div>
+      </div>
+      <div class="controls">
+        <button class="btn" id="prev3">‹</button>
+        <button class="btn" id="next3">›</button>
+      </div>
+    </div>
+    <div class="dots" id="dots3"></div>
+  </section>
 
 </div>
 </main>
-<footer><div class="social-icons"><a href="https://www.instagram.com/diana_chenvln?igsh=bTJpODg2NHM1aHZv"><i class="fa-brands fa-instagram"></i></a><a href="https://xhslink.com/m/8mqaQS7njra"><i class="fa-solid fa-music"></i></a><a href="https://youtube.com/@dianaviolinstudio3816?si=g_GXT86BjGBR-gKg"><i class="fa-brands fa-youtube"></i></a><a href="mailto:dianachen.envie@gmail.com"><i class="fa-solid fa-envelope"></i></a></div><p>© 2025 Diana Violin Studio | Singapore Violinist | Violin Lessons Singapore | Violin Teacher Singapore | Gallery | Singapore</p></footer>
+<footer>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/diana_chenvln?igsh=bTJpODg2NHM1aHZv"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://xhslink.com/m/8mqaQS7njra"><i class="fa-solid fa-music"></i></a>
+    <a href="https://youtube.com/@dianaviolinstudio3816?si=g_GXT86BjGBR-gKg"><i class="fa-brands fa-youtube"></i></a>
+    <a href="mailto:dianachen.envie@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <p>© 2025 Diana Violin Studio | Singapore Violinist | Violin Lessons Singapore | Violin Teacher Singapore | Gallery | Singapore</p>
+</footer>
 <script>
-function initCarousel(trackId,prevId,nextId,dotsId){const track=document.getElementById(trackId);const slides=[...track.children];const prev=document.getElementById(prevId);const next=document.getElementById(nextId);const dotsWrap=document.getElementById(dotsId);let idx=0;let width=()=>track.getBoundingClientRect().width;slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dotsWrap.appendChild(d);d.onclick=()=>goTo(i)});const dots=[...dotsWrap.children];function goTo(i){idx=(i+slides.length)%slides.length;track.style.transform=`translateX(${-idx*width()}px)`;dots.forEach((d,di)=>d.classList.toggle('active',di===idx))}prev.onclick=()=>goTo(idx-1);next.onclick=()=>goTo(idx+1);window.addEventListener('resize',()=>goTo(idx));goTo(0)}
+function initCarousel(trackId,prevId,nextId,dotsId){
+  const track=document.getElementById(trackId);
+  const slides=[...track.children];
+  const prev=document.getElementById(prevId);
+  const next=document.getElementById(nextId);
+  const dotsWrap=document.getElementById(dotsId);
+  let idx=0;
+  let width=()=>track.getBoundingClientRect().width;
+
+  slides.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='dot'+(i===0?' active':'');
+    dotsWrap.appendChild(d);
+    d.onclick=()=>goTo(i);
+  });
+
+  const dots=[...dotsWrap.children];
+
+  function goTo(i){
+    idx=(i+slides.length)%slides.length;
+    track.style.transform=`translateX(${-idx*width()}px)`;
+    dots.forEach((d,di)=>d.classList.toggle('active',di===idx));
+  }
+
+  prev.onclick=()=>goTo(idx-1);
+  next.onclick=()=>goTo(idx+1);
+  window.addEventListener('resize',()=>goTo(idx));
+  goTo(0);
+}
 initCarousel('track1','prev1','next1','dots1');
 initCarousel('track2','prev2','next2','dots2');
 initCarousel('track3','prev3','next3','dots3');
-const menuToggle=document.getElementById('menu-toggle'),navLinks=document.getElementById('nav-links');menuToggle.onclick=()=>{navLinks.classList.toggle('active')};
+
+const menuToggle=document.getElementById('menu-toggle'),
+      navLinks=document.getElementById('nav-links');
+menuToggle.onclick=()=>{navLinks.classList.toggle('active')};
 </script>
 </body>
 </html>
